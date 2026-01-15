@@ -40,12 +40,6 @@ HTML5
 
 CSS3
 
-JavaScript
-
-Backend
-
-Node.js / Python (as applicable)
-
 Security & Analysis
 
 Metadata Analysis
@@ -59,6 +53,10 @@ Forensic Techniques (Conceptual)
 🧠 How TracePay Works
 
 User uploads a payment screenshot / transaction detail
+
+<img width="883" height="558" alt="image" src="https://github.com/user-attachments/assets/6937d71e-1e8b-4556-a930-11c7c7989466" />
+
+System Architecture
 
 System analyzes:
 
@@ -86,6 +84,9 @@ Result is displayed as:
 
 
 /assets/screenshots/
+
+✨ Live Demo
+Experience TracePay Now → https://ashish-code-lab.github.io/hackathone-/
 
 🎯 Use Cases
 
@@ -128,9 +129,9 @@ Government cyber cells
 👨‍💻 Author
 
 Ashish Kumar
-🎓 B.Tech + M.Tech (Cybersecurity)
-🏫 UPSIFS
-💡 Passionate about Cybersecurity & Digital Forensics
+B.Tech + M.Tech (Cybersecurity)
+UPSIFS
+Passionate about Cybersecurity & Digital Forensics
 
 📄 License
 
@@ -141,8 +142,4 @@ Feel free to use, modify, and distribute with attribution.
 
 If you like this project:
 
-⭐ Star the repo
 
-🍴 Fork it
-
-🧠 Share feedback
