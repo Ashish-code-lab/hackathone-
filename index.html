@@ -1,0 +1,2445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TRACEPAY</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 80px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(15, 23, 42, 0.05);
+      animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-left:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-box {
+      width: 36px;
+      height: 36px;
+      background: #0f172a;
+      color: #fff;
+      font-weight: 800;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: 18px;
+    }
+
+    .nav-links a {
+      margin: 0 16px;
+      text-decoration: none;
+      font-size: 14.5px;
+      color: #475569;
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2563eb;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-btn {
+      background: #0f172a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-btn:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .nav-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #0f172a;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 140px 20px 160px;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 80px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid #e2e8f0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      color: #64748b;
+      margin-bottom: 32px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      background: linear-gradient(45deg, #0f172a, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { filter: brightness(1); }
+      to { filter: brightness(1.2); }
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 20px;
+      animation: slideInUp 0.8s ease-out 0.3s both;
+    }
+
+    .hero-desc {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #64748b;
+      animation: slideInUp 0.8s ease-out 0.5s both;
+    }
+
+    /* FLOW */
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      animation: slideInUp 0.8s ease-out 0.7s both;
+    }
+
+    .flow-card {
+      width: 120px;
+      height: 120px;
+      background: #f8fafc;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 20px 40px rgba(15,23,42,0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .flow-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px rgba(15,23,42,0.1);
+    }
+
+    .flow-card span {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #334155;
+    }
+
+    .flow-card.dark {
+      background: #0f172a;
+      color: #ffffff;
+      animation: darkCardPulse 2s infinite;
+    }
+
+    @keyframes darkCardPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .flow-card.dark span {
+      color: #ffffff;
+    }
+
+    .flow-line {
+      width: 40px;
+      height: 2px;
+      background: #e2e8f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #2563eb, transparent);
+      animation: flowLine 2s infinite;
+    }
+
+    @keyframes flowLine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* CONTENT ABOVE LOGO */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* COLLEGE LOGO BACKGROUND */
+    .hero-bg-logo {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z' fill='none' stroke='%230f172a' stroke-width='0.5' opacity='0.15'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 520px;
+      opacity: 0.15;
+      filter: contrast(1.25) brightness(0.85);
+      mix-blend-mode: multiply;
+      z-index: 1;
+      pointer-events: none;
+      animation: logoFloat 18s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-18px) scale(1.02);
+      }
+      100% {
+        transform: translateY(0px) scale(1);
+      }
+    }
+
+    /* Section Animations */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* CHALLENGE SECTION */
+    .challenge-section {
+      padding: 140px 80px;
+      background: #f8fafc;
+    }
+
+    /* GRID */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* LEFT */
+    .challenge-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      color: #2563eb;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .challenge-left h2 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 22px;
+      color: #0f172a;
+    }
+
+    .challenge-left p {
+      font-size: 16.5px;
+      line-height: 1.65;
+      color: #475569;
+      margin-bottom: 18px;
+      max-width: 560px;
+    }
+
+    /* RIGHT CARD */
+    .challenge-right {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .challenge-right:hover {
+      transform: translateY(-5px);
+    }
+
+    .challenge-right h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 26px;
+      color: #0f172a;
+    }
+
+    /* PAIN ITEMS */
+    .pain-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .pain-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .pain-dot {
+      width: 10px;
+      height: 10px;
+      background: #ef4444;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+      animation: dotPulse 2s infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .pain-item strong {
+      font-size: 15.5px;
+      color: #0f172a;
+    }
+
+    .pain-item p {
+      font-size: 14.5px;
+      color: #64748b;
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    /* QUOTE */
+    .challenge-quote {
+      margin-top: 100px;
+      background: #ffffff;
+      padding: 28px 36px;
+      border-radius: 18px;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 600;
+      color: #0f172a;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+      border-left: 6px solid #2563eb;
+      max-width: 860px;
+      transition: transform 0.3s ease;
+    }
+
+    .challenge-quote:hover {
+      transform: scale(1.02);
+    }
+
+    /* BANK PROOF SECTION */
+    .bank-proof-section {
+      padding: 140px 80px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .bank-proof-section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 14px;
+    }
+
+    .bank-proof-sub {
+      font-size: 16.5px;
+      color: #64748b;
+      margin-bottom: 80px;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 90px;
+      position: relative;
+    }
+
+    .timeline-item {
+      text-align: center;
+      min-width: 140px;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-item h4 {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-top: 12px;
+      color: #0f172a;
+    }
+
+    .timeline-item span {
+      font-size: 11px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .timeline-item p {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 6px;
+    }
+
+    /* CIRCLES */
+    .circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid #cbd5e1;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .circle {
+      transform: scale(1.2);
+    }
+
+    .warning-circle {
+      border: 3px solid #f59e0b;
+      color: #f59e0b;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: warningPulse 2s infinite;
+    }
+
+    @keyframes warningPulse {
+      0%, 100% { border-color: #f59e0b; }
+      50% { border-color: #fbbf24; }
+    }
+
+    .danger-circle {
+      border: 3px solid #ef4444;
+      color: #ef4444;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: dangerPulse 2s infinite;
+    }
+
+    @keyframes dangerPulse {
+      0%, 100% { border-color: #ef4444; }
+      50% { border-color: #f87171; }
+    }
+
+    /* LINE */
+    .line {
+      width: 80px;
+      height: 2px;
+      background: #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #64748b, transparent);
+      animation: timelineFlow 3s infinite;
+    }
+
+    @keyframes timelineFlow {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* POINTS */
+    .bank-proof-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 80px;
+      max-width: 1100px;
+      margin: 0 auto 90px;
+      text-align: left;
+    }
+
+    .point {
+      display: flex;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .point.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .num {
+      color: #2563eb;
+      font-weight: 800;
+      font-size: 18px;
+      min-width: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .point:hover .num {
+      transform: scale(1.2);
+    }
+
+    .point p {
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    /* FOOTER LINE */
+    .bank-proof-footer {
+      background: #0f172a;
+      color: #ffffff;
+      display: inline-block;
+      padding: 18px 34px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .bank-proof-footer:hover {
+      background: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    /* SOLUTION SECTION */
+    .solution-section {
+      padding: 160px 80px;
+      background: radial-gradient(circle at top, #020617 0%, #00040f 80%);
+      color: #ffffff;
+    }
+
+    .solution-label {
+      display: block;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+      margin-bottom: 16px;
+    }
+
+    .solution-section h2 {
+      text-align: center;
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .solution-sub {
+      text-align: center;
+      font-size: 17px;
+      color: #94a3b8;
+      max-width: 760px;
+      margin: 0 auto 100px;
+      line-height: 1.6;
+    }
+
+    /* CARDS */
+    .solution-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    /* CARD */
+    .solution-card {
+      background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9));
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .solution-card:hover::before {
+      left: 100%;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* CARD HEADER */
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .card-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #2563eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .solution-card:hover .card-num {
+      transform: rotate(360deg);
+    }
+
+    .card-title h3 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    /* DESC */
+    .card-desc {
+      font-size: 15.5px;
+      color: #cbd5f5;
+      margin-bottom: 28px;
+    }
+
+    /* DATA GRID */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px 30px;
+    }
+
+    .data-grid > div {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .solution-card:hover .data-grid > div {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .data-grid span {
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .data-grid strong {
+      font-size: 15px;
+    }
+
+    /* SECURITY ITEMS */
+    .security-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .solution-card:hover .security-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .security-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(59,130,246,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .security-item:hover .icon {
+      transform: scale(1.2);
+    }
+
+    .security-item strong {
+      font-size: 15.5px;
+    }
+
+    .security-item p {
+      font-size: 14.5px;
+      color: #94a3b8;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    /* FRAUD PROTECTION SECTION */
+    .fraud-protection {
+      padding: 140px 80px;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .fraud-protection h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .fraud-sub {
+      font-size: 16.5px;
+      color: #64748b;
+      margin-bottom: 80px;
+    }
+
+    /* CARDS */
+    .fraud-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 90px;
+    }
+
+    .fraud-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 34px 30px 38px;
+      text-align: left;
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fraud-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .fraud-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .fraud-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 40px 80px rgba(15, 23, 42, 0.1);
+    }
+
+    /* TOP ROW */
+    .fraud-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .fraud-icon {
+      font-size: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    .fraud-card:hover .fraud-icon {
+      transform: rotate(15deg);
+    }
+
+    .fraud-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: #93c5fd;
+    }
+
+    /* TEXT */
+    .fraud-card h3 {
+      font-size: 18.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .fraud-highlight {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .fraud-highlight::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      animation: arrowBounce 1s infinite;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+    }
+
+    .fraud-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #64748b;
+    }
+
+    /* FOOTER STRIP */
+    .fraud-footer {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 18px 36px;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .fraud-footer:hover {
+      background: #2563eb;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    /* COMPARISON SECTION */
+    .comparison-section {
+      padding: 140px 80px;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .comparison-section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .comparison-sub {
+      font-size: 16.5px;
+      color: #64748b;
+      margin-bottom: 70px;
+    }
+
+    /* TABLE */
+    .comparison-table {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .comparison-table:hover {
+      transform: scale(1.01);
+    }
+
+    /* HEADER */
+    .table-header {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .table-header div {
+      padding: 22px 24px;
+      text-align: left;
+      transition: background 0.3s ease;
+    }
+
+    .table-header .tracepay-col {
+      background: #2563eb;
+    }
+
+    .table-header div:hover {
+      background: #374151;
+    }
+
+    .table-header .tracepay-col:hover {
+      background: #1d4ed8;
+    }
+
+    /* ROWS */
+    .table-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      border-bottom: 1px solid #e5e7eb;
+      transition: background 0.3s ease;
+    }
+
+    .table-row:hover {
+      background: #f8fafc;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .table-row div {
+      padding: 22px 24px;
+      text-align: left;
+      font-size: 15.5px;
+      color: #0f172a;
+      transition: transform 0.3s ease;
+    }
+
+    .table-row:hover div {
+      transform: translateX(5px);
+    }
+
+    /* FEATURE LABEL */
+    .feature {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #64748b;
+    }
+
+    /* TRACEPAY COLUMN */
+    .tracepay {
+      background: #f1f5ff;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    /* FOOTER LINE */
+    .comparison-footer {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      transition: transform 0.3s ease;
+    }
+
+    .comparison-footer:hover {
+      transform: scale(1.05);
+    }
+
+    .comparison-footer span {
+      color: #2563eb;
+      text-decoration: underline;
+      position: relative;
+    }
+
+    .comparison-footer span::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #2563eb;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .comparison-footer:hover span::after {
+      transform: scaleX(1);
+    }
+
+    /* IMPACT SECTION */
+    .impact-section {
+      padding: 140px 80px;
+      background: #ffffff;
+    }
+
+    /* GRID */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* LEFT */
+    .impact-left h2 {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 40px;
+    }
+
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .impact-card {
+      background: #f8fafc;
+      padding: 26px 28px;
+      border-radius: 18px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .impact-card:hover {
+      background: #e0f2fe;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+    }
+
+    .impact-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .impact-card p {
+      font-size: 14.5px;
+      color: #64748b;
+    }
+
+    /* RIGHT PANEL */
+    .vision-panel {
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 80%);
+      border-radius: 42px;
+      padding: 60px 56px;
+      color: #ffffff;
+      transition: transform 0.3s ease;
+    }
+
+    .vision-panel:hover {
+      transform: scale(1.02);
+    }
+
+    .vision-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #60a5fa;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .vision-panel h3 {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .vision-line {
+      width: 60px;
+      height: 4px;
+      background: #2563eb;
+      margin-top: 28px;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    .vision-panel:hover .vision-line {
+      width: 100px;
+    }
+
+    /* FINAL VISION */
+    .final-vision {
+      padding: 140px 20px 120px;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .final-vision h2 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+
+    .final-vision p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #64748b;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: radial-gradient(circle at top, #020617 0%, #00040f 80%);
+      padding: 34px 80px;
+      color: #94a3b8;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* LEFT */
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-left:hover {
+      transform: scale(1.05);
+    }
+
+    .footer-logo {
+      width: 32px;
+      height: 32px;
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 800;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .footer-left span {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* CENTER */
+    .footer-center {
+      font-size: 13.5px;
+    }
+
+    /* RIGHT */
+    .footer-right a {
+      margin-left: 26px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      text-decoration: none;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    .footer-right a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #ffffff;
+      transition: width 0.3s ease;
+    }
+
+    .footer-right a:hover {
+      color: #ffffff;
+    }
+
+    .footer-right a:hover::after {
+      width: 100%;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #64748b;
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: #ef4444;
+    }
+
+    .modal h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .form-group input {
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+    .modal-submit {
+      background: #0f172a;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .modal-submit:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 60px;
+      }
+      
+      .hero h2 {
+        font-size: 32px;
+      }
+      
+      .challenge-grid,
+      .impact-grid {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .navbar {
+        padding: 20px 40px;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .hero h2 {
+        font-size: 28px;
+      }
+      
+      .flow {
+        flex-wrap: wrap;
+      }
+      
+      .flow-line {
+        display: none;
+      }
+      
+      .challenge-grid,
+      .impact-grid,
+      .solution-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .fraud-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .bank-proof-points {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline {
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      
+      .line {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links a {
+        margin: 15px 0;
+        font-size: 18px;
+      }
+      
+      .navbar {
+        padding: 20px;
+      }
+      
+      .hero {
+        padding: 120px 20px 100px;
+        margin-top: 60px;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero h2 {
+        font-size: 24px;
+      }
+      
+      .hero-desc {
+        font-size: 16px;
+        margin-bottom: 60px;
+      }
+      
+      .challenge-section,
+      .bank-proof-section,
+      .solution-section,
+      .fraud-protection,
+      .comparison-section,
+      .impact-section {
+        padding: 80px 20px;
+      }
+      
+      .challenge-left h2,
+      .bank-proof-section h2,
+      .fraud-protection h2,
+      .comparison-section h2,
+      .impact-left h2 {
+        font-size: 32px;
+      }
+      
+      .solution-section h2 {
+        font-size: 36px;
+      }
+      
+      .fraud-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .comparison-table {
+        overflow-x: auto;
+      }
+      
+      .table-header,
+      .table-row {
+        grid-template-columns: 200px 150px 150px;
+      }
+      
+      .site-footer {
+        padding: 30px 20px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      
+      .footer-right {
+        display: flex;
+        gap: 20px;
+        margin-top: 10px;
+      }
+      
+      .footer-right a {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero h2 {
+        font-size: 20px;
+      }
+      
+      .flow-card {
+        width: 100px;
+        height: 100px;
+        font-size: 24px;
+      }
+      
+      .impact-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .modal-content {
+        padding: 30px 20px;
+        width: 95%;
+      }
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: #0f172a;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #2563eb;
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Menu Modal -->
+<div id="navModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeNavModal()">&times;</span>
+    <h2>Navigation Menu</h2>
+    <div class="modal-menu">
+      <a href="#problem" onclick="closeNavModal()" class="modal-menu-item">The Problem</a>
+      <a href="#solution" onclick="closeNavModal()" class="modal-menu-item">Our Solution</a>
+      <a href="#usecases" onclick="closeNavModal()" class="modal-menu-item">Use Cases</a>
+      <a href="#impact" onclick="closeNavModal()" class="modal-menu-item">Impact</a>
+    </div>
+  </div>
+</div>
+
+<!-- Access Portal Modal -->
+<div id="portalModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('portalModal')">&times;</span>
+    <h2>Access Portal</h2>
+    <form class="modal-form" onsubmit="login(event)">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="modal-submit">Login to Portal</button>
+    </form>
+    <p style="margin-top: 20px; text-align: center; color: #64748b; font-size: 14px;">
+      Don't have an account? <a href="#" style="color: #2563eb; font-weight: 600;" onclick="showSignup()">Sign up here</a>
+    </p>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+    <h2>Create Account</h2>
+    <form class="modal-form" onsubmit="signup(event)">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="signupEmail">Email Address</label>
+        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+      </div>
+      <button type="submit" class="modal-submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+    <h2>Contact Us</h2>
+    <form class="modal-form" onsubmit="contact(event)">
+      <div class="form-group">
+        <label for="contactName">Name</label>
+        <input type="text" id="contactName" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label for="contactEmail">Email</label>
+        <input type="email" id="contactEmail" placeholder="Your email" required>
+      </div>
+      <div class="form-group">
+        <label for="contactMessage">Message</label>
+        <textarea id="contactMessage" placeholder="Your message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="modal-submit">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<div class="back-to-top" onclick="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-left" onclick="scrollToTop()">
+    <div class="logo-box">TP</div>
+    <span class="brand">TRACEPAY</span>
+  </div>
+
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#problem">The Problem</a>
+    <a href="#solution">Our Solution</a>
+    <a href="#usecases">Use Cases</a>
+    <a href="#impact">Impact</a>
+  </nav>
+
+  <button class="nav-btn" onclick="openModal('portalModal')">Access Portal</button>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-logo"></div>
+  
+  <div class="hero-content">
+    <div class="badge">DIGITAL PAYMENT INFRASTRUCTURE</div>
+
+    <h1>TRACEPAY</h1>
+
+    <h2>
+      Turning Every Digital Payment<br/>
+      into Forensic Evidence
+    </h2>
+
+    <p class="hero-desc">
+      A Cyber-Fraud Prevention &amp; Legal Proof Platform designed to restore
+      trust in digital transactions.
+    </p>
+
+    <!-- FLOW -->
+    <div class="flow">
+      <div class="flow-card" onclick="showInfo('phone')">
+        📱
+        <span>PHONE</span>
+      </div>
+
+      <div class="flow-line"></div>
+
+      <div class="flow-card" onclick="showInfo('bank')">
+        🏦
+        <span>BANK</span>
+      </div>
+
+      <div class="flow-line"></div>
+
+      <div class="flow-card" onclick="showInfo('blockchain')">
+        ⛓️
+        <span>BLOCKCHAIN</span>
+      </div>
+
+      <div class="flow-line"></div>
+
+      <div class="flow-card dark" onclick="showInfo('court')">
+        ⚖️
+        <span>COURT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGE SECTION -->
+<section class="challenge-section" id="problem">
+  <div class="challenge-grid">
+    <!-- LEFT CONTENT -->
+    <div class="challenge-left">
+      <span class="challenge-label">THE CHALLENGE</span>
+      <h2>Why Digital Payment<br/>Fraud Keeps Winning</h2>
+      <p>
+        India has become a global leader in real-time digital payments through
+        UPI. However, this convenience has come with a steep price: an explosion
+        in cyber-fraud.
+      </p>
+      <p>
+        Currently, victims rely on screenshots and bank statements to prove
+        they've been scammed. In a court of law or during a rapid police
+        investigation, these artifacts are often insufficient.
+      </p>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="challenge-right">
+      <h3>Current Pain Points</h3>
+      <div class="pain-item">
+        <span class="pain-dot"></span>
+        <div>
+          <strong>Screenshots can be edited</strong>
+          <p>Sophisticated apps allow scammers to generate fake payment confirmations in seconds.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-dot"></span>
+        <div>
+          <strong>PDFs can be denied</strong>
+          <p>Bank statements are easily manipulated or their authenticity questioned in legal disputes.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-dot"></span>
+        <div>
+          <strong>Banks are slow</strong>
+          <p>Reconciling data across institutions takes days, while money moves in seconds.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <span class="pain-dot"></span>
+        <div>
+          <strong>Money disappears</strong>
+          <p>By the time proof is validated, the funds have been layered through multiple accounts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="challenge-quote" onclick="copyQuote()">
+    "The problem is not missing data — it is missing trust &amp; speed."
+  </div>
+</section>
+
+<!-- BANK PROOF SECTION -->
+<section class="bank-proof-section">
+  <h2>Why Bank Proof Is Not Enough</h2>
+  <p class="bank-proof-sub">
+    Standard banking systems were designed for transaction clearing,
+    not for real-time forensic verification.
+  </p>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="circle"></div>
+      <h4>Victim</h4>
+      <span>MINUTE 0</span>
+      <p>Fraud happens</p>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="timeline-item">
+      <div class="circle"></div>
+      <h4>Bank</h4>
+      <span>HOUR 1-24</span>
+      <p>Reporting Delay</p>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="timeline-item">
+      <div class="circle"></div>
+      <h4>Police</h4>
+      <span>DAY 1-3</span>
+      <p>Case Filing</p>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="timeline-item">
+      <div class="circle warning-circle">⚠</div>
+      <h4>Delay</h4>
+      <span>WEEK 1</span>
+      <p>Official Request</p>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="timeline-item">
+      <div class="circle danger-circle">✕</div>
+      <h4>Scammer Escapes</h4>
+      <span>FINAL</span>
+      <p>Money Gone</p>
+    </div>
+  </div>
+
+  <!-- EXPLANATION GRID -->
+  <div class="bank-proof-points">
+    <div class="point">
+      <span class="num">01</span>
+      <p><strong>Bank proof comes later.</strong> Official statements take time to generate and even longer to verify across different banking networks.</p>
+    </div>
+    <div class="point">
+      <span class="num">02</span>
+      <p><strong>Police can't freeze accounts fast.</strong> Without court-admissible, instant proof, law enforcement cannot legally mandate immediate freezes.</p>
+    </div>
+    <div class="point">
+      <span class="num">03</span>
+      <p><strong>Scammers move money in minutes.</strong> Automated scripts layer stolen funds across dozens of accounts before the first manual report is read.</p>
+    </div>
+    <div class="point">
+      <span class="num">04</span>
+      <p><strong>Victims don't control their proof.</strong> The evidence is locked in bank servers, inaccessible to the victim when they need it most.</p>
+    </div>
+  </div>
+
+  <!-- FINAL LINE -->
+  <div class="bank-proof-footer" onclick="showDemo()">
+    Fraud is fast. Evidence is slow.
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution-section" id="solution">
+  <span class="solution-label">OUR SOLUTION</span>
+  <h2>What TracePay Does</h2>
+  <p class="solution-sub">
+    TracePay creates a <strong>Digital Payment Evidence Certificate</strong> —
+    a mathematically verifiable proof of transaction.
+  </p>
+
+  <div class="solution-cards">
+    <!-- CARD 1 -->
+    <div class="solution-card">
+      <div class="card-title">
+        <span class="card-num">1</span>
+        <h3>Instant Data Capture</h3>
+      </div>
+      <p class="card-desc">
+        At the precise moment of payment, we capture a holistic forensic snapshot:
+      </p>
+      <div class="data-grid">
+        <div>
+          <span>PARTICIPANTS</span>
+          <strong>Sender &amp; Receiver</strong>
+        </div>
+        <div>
+          <span>FINANCIALS</span>
+          <strong>Amount &amp; Currency</strong>
+        </div>
+        <div>
+          <span>TIMESTAMP</span>
+          <strong>Atomic Time</strong>
+        </div>
+        <div>
+          <span>CHANNEL</span>
+          <strong>Bank &amp; UPI ID</strong>
+        </div>
+        <div>
+          <span>HARDWARE</span>
+          <strong>Device ID</strong>
+        </div>
+        <div>
+          <span>NETWORK</span>
+          <strong>IP &amp; Location</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="solution-card">
+      <div class="card-title">
+        <span class="card-num">2</span>
+        <h3>Security Protocol</h3>
+      </div>
+      <div class="security-item">
+        <div class="icon">🔒</div>
+        <div>
+          <strong>Encryption</strong>
+          <p>
+            All captured data is encrypted using military-grade AES-256 protocols
+            before leaving the secure environment.
+          </p>
+        </div>
+      </div>
+      <div class="security-item">
+        <div class="icon">//</div>
+        <div>
+          <strong>Hashing</strong>
+          <p>
+            Unique SHA-256 digital fingerprints are generated to ensure that even
+            a single bit of altered data is immediately detectable.
+          </p>
+        </div>
+      </div>
+      <div class="security-item">
+        <div class="icon">⛓️</div>
+        <div>
+          <strong>Blockchain Immutable Ledger</strong>
+          <p>
+            The cryptographic hash is anchored to a decentralized ledger, providing
+            a permanent, time-stamped proof of existence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAUD PROTECTION -->
+<section class="fraud-protection" id="usecases">
+  <h2>Real-World Fraud Protection</h2>
+  <p class="fraud-sub">
+    How TracePay intervenes in common cybercrime scenarios.
+  </p>
+
+  <div class="fraud-cards">
+    <!-- CARD 1 -->
+    <div class="fraud-card" onclick="showCaseStudy(1)">
+      <div class="fraud-top">
+        <div class="fraud-icon">🖼️</div>
+        <span class="fraud-num">01</span>
+      </div>
+      <h3>Fake Screenshot Fraud</h3>
+      <p class="fraud-highlight">
+        → TracePay proves payment never happened
+      </p>
+      <p class="fraud-desc">
+        Merchant checks the TracePay ledger instead of relying on the customer's
+        phone screen. No record found = No service rendered.
+      </p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="fraud-card" onclick="showCaseStudy(2)">
+      <div class="fraud-top">
+        <div class="fraud-icon">📱</div>
+        <span class="fraud-num">02</span>
+      </div>
+      <h3>OTP / Account Takeover</h3>
+      <p class="fraud-highlight">
+        → TracePay captures scammer's device &amp; IP
+      </p>
+      <p class="fraud-desc">
+        The transaction certificate includes the unauthorized device's unique
+        identifiers, providing a direct trail to the perpetrator.
+      </p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="fraud-card" onclick="showCaseStudy(3)">
+      <div class="fraud-top">
+        <div class="fraud-icon">💬</div>
+        <span class="fraud-num">03</span>
+      </div>
+      <h3>Telegram / Investment Scams</h3>
+      <p class="fraud-highlight">
+        → TracePay proves money flow exactly
+      </p>
+      <p class="fraud-desc">
+        Provides court-admissible proof that funds moved to a specific wallet or
+        account at a specific second, bypassing bank delays.
+      </p>
+    </div>
+  </div>
+
+  <!-- BOTTOM STRIP -->
+  <div class="fraud-footer" onclick="showDemo()">
+    🔒 TracePay locks the money trail before it disappears.
+  </div>
+</section>
+
+<!-- COMPARISON SECTION -->
+<section class="comparison-section">
+  <h2>Why TracePay Is Not Just Another App</h2>
+  <p class="comparison-sub">
+    Comparing standard infrastructure with forensic infrastructure.
+  </p>
+
+  <div class="comparison-table">
+    <div class="table-header">
+      <div>Feature</div>
+      <div>Bank / UPI</div>
+      <div class="tracepay-col">TracePay</div>
+    </div>
+
+    <div class="table-row">
+      <div class="feature">PRIMARY FUNCTION</div>
+      <div>Shows money</div>
+      <div class="tracepay">Proves truth</div>
+    </div>
+
+    <div class="table-row">
+      <div class="feature">INTEGRITY</div>
+      <div>Editable records</div>
+      <div class="tracepay">Cryptographically locked</div>
+    </div>
+
+    <div class="table-row">
+      <div class="feature">RESPONSE SPEED</div>
+      <div>Slow (Request-based)</div>
+      <div class="tracepay">Instant (Proactive)</div>
+    </div>
+
+    <div class="table-row">
+      <div class="feature">OWNERSHIP</div>
+      <div>Bank-controlled</div>
+      <div class="tracepay">User-owned</div>
+    </div>
+
+    <div class="table-row">
+      <div class="feature">LEGAL STATUS</div>
+      <div>Disputable</div>
+      <div class="tracepay">Court-verifiable</div>
+    </div>
+  </div>
+
+  <div class="comparison-footer" onclick="openModal('contactModal')">
+    Banks move money. <span>TracePay proves money.</span>
+  </div>
+</section>
+
+<!-- IMPACT SECTION -->
+<section class="impact-section" id="impact">
+  <div class="impact-grid">
+    <div class="impact-left">
+      <h2>Measurable Impact</h2>
+      <div class="impact-cards">
+        <div class="impact-card" onclick="showImpact(1)">
+          <h4>90% Faster Evidence</h4>
+          <p>Reduces time to obtain court-admissible proof from days to minutes.</p>
+        </div>
+        <div class="impact-card" onclick="showImpact(2)">
+          <h4>50% Fewer Disputes</h4>
+          <p>Clear, immutable proof reduces chargebacks and merchant-vendor conflicts.</p>
+        </div>
+        <div class="impact-card" onclick="showImpact(3)">
+          <h4>30% Lower Fraud Loss</h4>
+          <p>Real-time tracking and alerts prevent fund layering and account takeover.</p>
+        </div>
+        <div class="impact-card" onclick="showImpact(4)">
+          <h4>100% User-Controlled</h4>
+          <p>Individuals own their transaction certificates, eliminating bank dependency.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="vision-panel">
+      <span class="vision-label">VISION 2026</span>
+      <h3>Making Digital Payments as Verifiable as Paper Currency</h3>
+      <div class="vision-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL VISION -->
+<section class="final-vision">
+  <h2>BUILDING THE FUTURE OF FINANCIAL TRUST</h2>
+  <p>
+    TracePay is not just an application; it's a foundational layer of the digital
+    economy. We are closing the gap between the speed of fraud and the slow pace
+    of justice.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-left" onclick="scrollToTop()">
+      <div class="footer-logo">TP</div>
+      <span>TRACEPAY</span>
+    </div>
+
+    <div class="footer-center">
+      © 2026 TracePay Infrastructure. All Rights Reserved.
+    </div>
+
+    <div class="footer-right">
+      <a href="#" onclick="openModal('contactModal')">CONTACT</a>
+      <a href="#" onclick="showTerms()">TERMS</a>
+      <a href="#" onclick="showPrivacy()">PRIVACY</a>
+      <a href="#" onclick="openModal('portalModal')">PORTAL</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  function toggleMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+  }
+
+  // Modal Functions
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  function closeNavModal() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.remove('active');
+  }
+
+  // Show signup modal
+  function showSignup() {
+    closeModal('portalModal');
+    setTimeout(() => openModal('signupModal'), 300);
+  }
+
+  // Login function
+  function login(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // Simulate login
+    alert(`Login successful!\nEmail: ${email}\nPassword: ${password}\n\nNote: This is a demo. In a real app, this would authenticate with a server.`);
+    closeModal('portalModal');
+    
+    // Reset form
+    event.target.reset();
+  }
+
+  // Signup function
+  function signup(event) {
+    event.preventDefault();
+    const name = document.getElementById('fullname').value;
+    const email = document.getElementById('signupEmail').value;
+    
+    alert(`Account created successfully!\nWelcome ${name}!\nEmail: ${email}\n\nYou can now login to the portal.`);
+    closeModal('signupModal');
+    openModal('portalModal');
+    
+    // Reset form
+    event.target.reset();
+  }
+
+  // Contact function
+  function contact(event) {
+    event.preventDefault();
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    
+    alert(`Thank you ${name}!\nYour message has been sent.\nWe'll contact you at ${email} soon.`);
+    closeModal('contactModal');
+    
+    // Reset form
+    event.target.reset();
+  }
+
+  // Show info for flow cards
+  function showInfo(type) {
+    const messages = {
+      phone: "📱 Phone: Captures payment intent and device fingerprint",
+      bank: "🏦 Bank: Validates transaction through financial institutions",
+      blockchain: "⛓️ Blockchain: Creates immutable cryptographic proof",
+      court: "⚖️ Court: Provides legally admissible evidence"
+    };
+    
+    alert(messages[type] || "Information about this step");
+  }
+
+  // Show case study
+  function showCaseStudy(number) {
+    const studies = {
+      1: "📄 Case Study #1: Fake Screenshot Fraud\n\nA customer tried to pay with a fake UPI screenshot. The merchant checked TracePay - no transaction found. Scam prevented instantly.",
+      2: "📱 Case Study #2: OTP Theft\n\nAccount takeover attempt detected. TracePay captured the scammer's device ID and IP address, providing evidence for police action.",
+      3: "💬 Case Study #3: Investment Scam\n\nVictim sent money to a Telegram investment group. TracePay provided exact transaction proof, helping recover funds through legal channels."
+    };
+    
+    alert(studies[number] || "Case study details");
+  }
+
+  // Show impact details
+  function showImpact(number) {
+    const impacts = {
+      1: "⚡ 90% Faster Evidence:\nTraditional methods: 3-7 days\nTracePay: 2-5 minutes",
+      2: "🤝 50% Fewer Disputes:\nClear proof eliminates 'he said, she said' scenarios in business transactions",
+      3: "🛡️ 30% Lower Fraud Loss:\nReal-time detection and alerts prevent money from leaving the ecosystem",
+      4: "🔑 100% User-Controlled:\nUsers own their transaction certificates, accessible anytime without bank permission"
+    };
+    
+    alert(impacts[number] || "Impact details");
+  }
+
+  // Show demo
+  function showDemo() {
+    alert("🔒 TracePay Demo\n\nExperience how TracePay works:\n1. Make a payment\n2. Get instant forensic certificate\n3. Verify anytime, anywhere\n4. Use in legal proceedings\n\nContact us for a live demo!");
+  }
+
+  // Copy quote
+  function copyQuote() {
+    const quote = "The problem is not missing data — it is missing trust & speed.";
+    navigator.clipboard.writeText(quote).then(() => {
+      alert("Quote copied to clipboard!");
+    });
+  }
+
+  // Show terms
+  function showTerms() {
+    alert("📄 Terms of Service\n\n1. TracePay provides forensic evidence services\n2. Users retain ownership of their data\n3. Service complies with all financial regulations\n4. Read full terms at tracepay.com/terms");
+  }
+
+  // Show privacy
+  function showPrivacy() {
+    alert("🔒 Privacy Policy\n\n1. We encrypt all user data\n2. No transaction data is sold to third parties\n3. Users control data sharing\n4. Read full policy at tracepay.com/privacy");
+  }
+
+  // Scroll to top
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Scroll animations
+  document.addEventListener('DOMContentLoaded', function() {
+    // Back to top button visibility
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      // Show/hide back to top button
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+      
+      // Section reveal animation
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (sectionTop < windowHeight * 0.85) {
+          section.classList.add('visible');
+          
+          // Animate pain items in challenge section
+          if (section.classList.contains('challenge-section')) {
+            const painItems = section.querySelectorAll('.pain-item');
+            painItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, index * 200);
+            });
+          }
+          
+          // Animate timeline items
+          if (section.classList.contains('bank-proof-section')) {
+            const timelineItems = section.querySelectorAll('.timeline-item');
+            const points = section.querySelectorAll('.point');
+            
+            timelineItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, index * 300);
+            });
+            
+            points.forEach((point, index) => {
+              setTimeout(() => {
+                point.classList.add('visible');
+              }, index * 200);
+            });
+          }
+        }
+      });
+    });
+    
+    // Initialize animations on load
+    window.dispatchEvent(new Event('scroll'));
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const navLinks = document.getElementById('navLinks');
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      
+      if (navLinks.classList.contains('active') && 
+          !navLinks.contains(event.target) && 
+          !mobileMenuBtn.contains(event.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+    
+    // Close modals when clicking outside
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(event) {
+        if (event.target === this) {
+          this.style.display = 'none';
+        }
+      });
+    });
+    
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeNavModal();
+      });
+    });
+    
+    // Flow card click effects
+    document.querySelectorAll('.flow-card').forEach(card => {
+      card.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 300);
+      });
+    });
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function(event) {
+    // Escape key closes modals
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+      });
+      closeNavModal();
+    }
+    
+    // Home key scrolls to top
+    if (event.key === 'Home') {
+      scrollToTop();
+    }
+  });
+</script>
+
+</body>
+</html>
