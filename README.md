@@ -1,145 +1,224 @@
-💳 TracePay – Secure Digital Payment Verification System
+<div align="center">
 
-TracePay is a cybersecurity-focused solution designed to verify, trace, and validate digital payment proofs to reduce fraud in online transactions.
+# TracePay
+### Secure Digital Payment Verification System
 
-🚀 Problem Statement
+*Detect. Verify. Protect.*
 
-With the rapid adoption of UPI and digital payments, cases of:
+[![Live Demo](https://img.shields.io/badge/Live_Demo-TracePay-4A90D9?style=for-the-badge)](https://ashish-code-lab.github.io/hackathone-/)
+[![MIT License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
+[![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-E74C3C?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Active-22C55E?style=for-the-badge)]()
 
-Fake payment screenshots
+---
 
-False transaction claims
+> **TracePay** is a cybersecurity-focused solution designed to verify, trace, and validate  
+> digital payment proofs — built to fight fraud in the age of UPI and instant payments.
 
-Payment dispute frauds
+---
 
-have increased significantly. Victims often lack technical proof to verify whether a payment was actually made.
+</div>
 
-💡 Solution: TracePay
+## The Problem
 
-TracePay provides a reliable verification mechanism that helps users and institutions confirm the authenticity of digital payment transactions using forensic and technical validation techniques.
+With the rapid adoption of UPI and digital payments, fraud has surged:
 
-🔍 Key Features
+| Fraud Type | Impact |
+|---|---|
+| Fake payment screenshots | Sellers dispatching goods without receiving payment |
+| False transaction claims | Disputes with no technical proof |
+| Payment proof forgery | Individuals and businesses suffering financial loss |
 
-✅ Payment Proof Verification
+> Victims often have **no technical way** to verify whether a payment was actually made.
 
-🧾 Fake Screenshot Detection (Metadata & Pattern Analysis)
+---
 
-🔐 Transaction Validation Logic
+## The Solution — TracePay
 
-📊 Clear Verification Status (Valid / Fake / Suspicious)
+TracePay provides a **reliable, forensic-grade verification mechanism** that helps users and institutions confirm the authenticity of digital payment transactions in seconds.
 
-🌐 User-Friendly Web Interface
+```
+Upload Screenshot  →  Analyse  →  Get Verified Result
+        |                |                |
+  Payment Proof    Forensic Engine    VALID / FAKE / SUSPICIOUS
+```
 
-🛡️ Cybersecurity-Oriented Design
+---
 
-🛠️ Tech Stack
+## Key Features
 
-Frontend
+```
+  Payment Proof Verification
+  Fake Screenshot Detection via Metadata & Pattern Analysis
+  Transaction Validation Logic
+  Clear Verification Status  →  Valid / Fake / Suspicious
+  User-Friendly Web Interface
+  Cybersecurity-Oriented Design
+```
 
-HTML5
+---
 
-CSS3
+## Tech Stack
 
-Security & Analysis
+### Frontend
 
-Metadata Analysis
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 
-Hash Validation
+### Security & Analysis Engine
 
-Pattern Matching
+| Technique | Purpose |
+|---|---|
+| Metadata Analysis | Extracts hidden image data to detect tampering |
+| Hash Validation | Verifies file integrity and detects modifications |
+| Pattern Matching | Compares UI elements against known payment app layouts |
+| Forensic Techniques | Identifies inconsistencies in screenshots |
 
-Forensic Techniques (Conceptual)
+---
 
-🧠 How TracePay Works
+## How TracePay Works
 
-User uploads a payment screenshot / transaction detail
+```
++----------------------------------------------------------+
+|                                                          |
+|   STEP 1        STEP 2          STEP 3        STEP 4     |
+|                                                          |
+|   Upload   ->   Analyse   ->   Process   ->   Result     |
+|                                                          |
+|  Payment       Metadata       Verification   VALID       |
+|  Screenshot    Timestamp      Engine         FAKE        |
+|                UI Pattern                    SUSPICIOUS  |
+|                Transaction                               |
+|                Logic                                     |
+|                                                          |
++----------------------------------------------------------+
+```
 
-<img width="883" height="558" alt="image" src="https://github.com/user-attachments/assets/6937d71e-1e8b-4556-a930-11c7c7989466" />
+### Detailed Flow
 
-System Architecture
+**Step 1 — Upload**
+User submits a payment screenshot or transaction detail.
 
-System analyzes:
+**Step 2 — Analysis**
+System examines:
+- Image metadata and EXIF data
+- Timestamp consistency
+- UI pattern matching against real payment apps
+- Transaction amount and logic validation
 
-Image metadata
+**Step 3 — Verification**
+Forensic engine processes all signals and cross-validates findings.
 
-Timestamp consistency
+**Step 4 — Result**
+Clear, instant verdict displayed to the user:
 
-UI pattern matching
+| Result | Meaning |
+|---|---|
+| VERIFIED | Payment is authentic and consistent |
+| FAKE | Screenshot shows signs of forgery |
+| SUSPICIOUS | Inconsistencies detected — needs manual review |
 
-Transaction logic
+---
 
-Verification engine processes the data
+## Screenshots
 
-Result is displayed as:
+**Main Interface**
 
-✔ Verified
+<img width="1873" height="1113" alt="TracePay Interface" src="https://github.com/user-attachments/assets/4f4e863f-fd6d-4c04-9998-269593155438" />
 
-❌ Fake
+**System Architecture**
 
-⚠ Suspicious
+<img width="883" height="558" alt="System Architecture" src="https://github.com/user-attachments/assets/6937d71e-1e8b-4556-a930-11c7c7989466" />
 
-📸 Screenshots
+---
 
-<img width="1873" height="1113" alt="image" src="https://github.com/user-attachments/assets/4f4e863f-fd6d-4c04-9998-269593155438" />
+## Live Demo
 
+<div align="center">
 
-/assets/screenshots/
+### [Experience TracePay Now](https://ashish-code-lab.github.io/hackathone-/)
 
-✨ Live Demo
-Experience TracePay Now → https://ashish-code-lab.github.io/hackathone-/
+</div>
 
-🎯 Use Cases
+---
 
-Online sellers & buyers
+## Use Cases
 
-Freelancers & clients
+```
+  Online Sellers & Buyers    ->  Verify payment before dispatching goods
+  Freelancers & Clients      ->  Confirm payment proof before delivering work
+  Small Businesses           ->  Prevent payment fraud at point of sale
+  Cybercrime Awareness       ->  Educate users on digital payment fraud
+  Educational & Hackathons   ->  Demonstrate forensic payment verification
+```
 
-Small businesses
+---
 
-Cybercrime awareness platforms
+## Hackathon & Academic Relevance
 
-Educational & hackathon demonstrations
+- Aligns with **Cybersecurity & Digital Forensics**
+- Solves a **real-world, high-impact problem**
+- Scalable for:
 
-🏆 Hackathon / Academic Relevance
+```
+  Banks          Payment Apps          Government Cyber Cells
+```
 
-Aligns with Cybersecurity & Digital Forensics
+---
 
-Solves a real-world problem
+## Future Enhancements
 
-Scalable for:
+| Feature | Description |
+|---|---|
+| Bank API Integration | Real-time transaction verification directly from banks |
+| AI Forgery Detection | Deep learning model to detect image manipulation |
+| Mobile App | Native Android / iOS version of TracePay |
+| Legal Report Generation | Auto-generate forensic reports for cybercrime filing |
+| Blockchain Traceability | Immutable transaction records using blockchain |
 
-Banks
+---
 
-Payment apps
+## Author
 
-Government cyber cells
+<div align="center">
 
-📌 Future Enhancements
+### Ashish Kumar
 
-🔗 Bank API integration
+**B.Tech + M.Tech — Cybersecurity**  
+**UPSIFS**
 
-🤖 AI-based image forgery detection
+*Passionate about Cybersecurity & Digital Forensics*
 
-📱 Mobile app version
+[![GitHub](https://img.shields.io/badge/GitHub-ashish--code--lab-181717?style=for-the-badge&logo=github)](https://github.com/ashish-code-lab)
 
-🏛️ Legal report generation
+</div>
 
-🔐 Blockchain-based transaction traceability
+---
 
-👨‍💻 Author
+## License
 
-Ashish Kumar
-B.Tech + M.Tech (Cybersecurity)
-UPSIFS
-Passionate about Cybersecurity & Digital Forensics
+This project is licensed under the **MIT License** —
+feel free to use, modify, and distribute with attribution.
 
-📄 License
+---
 
-This project is licensed under the MIT License
-Feel free to use, modify, and distribute with attribution.
+## Support
 
-⭐ Support
+If TracePay helped you or you find it interesting:
 
-If you like this project:
+```
+  Star this repository
+  Fork it and build on top
+  Share it with your network
+  Report issues to help improve it
+```
 
+---
 
+<div align="center">
+
+**Built for a safer digital payment ecosystem**
+
+*TracePay — Detect. Verify. Protect.*
+
+</div>
